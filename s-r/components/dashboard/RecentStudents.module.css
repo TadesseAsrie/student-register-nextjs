@@ -1,0 +1,25 @@
+.wrapper {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
