@@ -56,18 +56,35 @@ const pool = mysql.createPool({
     `);
 
     // Indexes for performance
-    await connection.query(`
-      CREATE INDEX IF NOT EXISTS idx_student_search_names ON students(lastName, firstName);
-    `);
-    await connection.query(`
-      CREATE INDEX IF NOT EXISTS idx_student_academic_tier ON students(department, year, semester);
-    `);
-    await connection.query(`
-      CREATE INDEX IF NOT EXISTS idx_student_id_lookup ON students(studentId);
-    `);
-    await connection.query(`
-      CREATE INDEX IF NOT EXISTS idx_user_role_lookup ON users(role);
-    `);
+    // Indexes for performance
+    try {
+      await connection.query(
+        `CREATE INDEX idx_student_search_names ON students(lastName, firstName);`,
+      );
+    } catch (err: any) {
+      if (err.code !== "ER_DUP_KEYNAME") throw err;
+    }
+    try {
+      await connection.query(
+        `CREATE INDEX idx_student_academic_tier ON students(department, year, semester);`,
+      );
+    } catch (err: any) {
+      if (err.code !== "ER_DUP_KEYNAME") throw err;
+    }
+    try {
+      await connection.query(
+        `CREATE INDEX idx_student_id_lookup ON students(studentId);`,
+      );
+    } catch (err: any) {
+      if (err.code !== "ER_DUP_KEYNAME") throw err;
+    }
+    try {
+      await connection.query(
+        `CREATE INDEX idx_user_role_lookup ON users(role);`,
+      );
+    } catch (err: any) {
+      if (err.code !== "ER_DUP_KEYNAME") throw err;
+    }
 
     console.log("🚀 Database schema and indexes verified.");
   } catch (error) {
