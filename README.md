@@ -40,6 +40,7 @@ Student
 
 ✅ Change password
 
+
 Tech Stack
 Layer	Technology
 Framework	Next.js 15 (App Router)
@@ -51,3 +52,4 @@ Validation	Zod + React Hook Form
 Styling	CSS Modules (Pure CSS)
 HTTP Client	Axios
 File Upload	Native Node.js fs
+if like the project give star
